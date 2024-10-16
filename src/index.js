@@ -1,17 +1,32 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import Login from "./Login";
+import CreateUser from "./CreateUser";
+import { Stack } from "@mui/material";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import App from "./App";
+import { SnackbarProvider } from 'notistack';
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <App />
+    <SnackbarProvider
+						autoHideDuration={3000}
+						preventDuplicate
+						anchorOrigin={{
+							vertical: 'top',
+							horizontal: 'center',
+						}}
+					>
+    <Router>
+      <Stack className="items-center">
+        <Routes>
+          <Route path="/user/login" element={<Login />} />
+          <Route path="/user/create" element={<CreateUser />} />
+          <Route path="/api/events" element={<App />} />
+        </Routes>
+      </Stack>
+      </Router>
+      </SnackbarProvider>
   </React.StrictMode>
 );
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
