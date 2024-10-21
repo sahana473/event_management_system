@@ -1,11 +1,13 @@
 import UserFormData from "./UseFormData";
 import { Link } from "react-router-dom";
+import { ApiRoutes } from './common/AppRoutes';
+
 const Login = () => {
   return (
     <>
       <UserFormData
         title="Login Page"
-        url="http://localhost:1000/api/user/login"
+        url={ApiRoutes.LOGIN_USER}
         buttonLabel="Login"
         onSuccessMessage="Login successful!"
         redirectOnSuccess="/api/events"

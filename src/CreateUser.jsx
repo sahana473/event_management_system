@@ -1,12 +1,13 @@
 import UserFormData from './UseFormData';
 import { Link } from 'react-router-dom';
+import { ApiRoutes } from './common/AppRoutes';
 
 const CreateUser = () => {
   return (
     <>
     <UserFormData
       title="Create User"
-      url="http://localhost:1000/api/user/create"
+      url= {ApiRoutes.CREATE_USER}
       buttonLabel="Create"
       onSuccessMessage="User created successfully"
     />
