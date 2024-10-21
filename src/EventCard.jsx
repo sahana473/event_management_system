@@ -1,6 +1,7 @@
 import { Stack, Typography } from "@mui/material";
 import Button from "@mui/material/Button";
 import {statusColors,bgColors} from "../src/constants"
+import { useState } from "react";
 const EventCard = (props) => {
   const {
     image,
@@ -14,11 +15,13 @@ const EventCard = (props) => {
     index,
     status,
   } = props;
-
+  const [disabled, setIsDisabled] = useState(false);
  
   const bgColor = bgColors[index % bgColors.length];
+  
 
   const handleSelectButtonClicked = (e) => {
+    setIsDisabled(true);
     selectedEvent(e);
   };
   return (
@@ -68,7 +71,7 @@ const EventCard = (props) => {
             variant="contained"
             className="w-28 hover:bg-blue-300 hover:text-gray-800"
             onClick={(e) => handleSelectButtonClicked(keyValue)}
-            // disabled={status === "cancelled"||status === "completed"}
+            disabled={status === "cancelled"||status === "completed"||disabled}
           >
             {buttonName}
           </Button>
