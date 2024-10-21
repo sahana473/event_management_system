@@ -39,14 +39,16 @@ const UserFormData = ({
         }
       }
     } catch (error) {
-      enqueueSnackbar(error?.response?.data?.error || "Something went wrong", { variant: "error" });
+      enqueueSnackbar(error?.response?.data?.error || "Something went wrong", {
+        variant: "error",
+      });
     } finally {
       setLoading(false);
     }
   };
 
   const handleOnChange = (e) => {
-    setError(false); 
+    setError(false);
     setUserId(e.target.value);
   };
 

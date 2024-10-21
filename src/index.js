@@ -3,12 +3,7 @@ import ReactDOM from "react-dom/client";
 import Login from "./Login";
 import CreateUser from "./CreateUser";
 import { Stack } from "@mui/material";
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-  Redirect,
-} from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import App from "./App";
 import { SnackbarProvider } from "notistack";
 

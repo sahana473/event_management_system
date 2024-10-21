@@ -6,7 +6,7 @@ import { useLocation } from "react-router-dom";
 import { getRequest } from "./api";
 import { enqueueSnackbar } from "notistack";
 import LogoutButton from "./LogoutButton";
-import  {ApiRoutes} from "./common/AppRoutes"
+import { ApiRoutes } from "./common/AppRoutes";
 
 function App() {
   const [responseCopy, setResponseCopy] = useState([]);
@@ -17,9 +17,7 @@ function App() {
   useEffect(() => {
     const fetchEvents = async () => {
       try {
-        const eventResponse = await getRequest(
-          ApiRoutes.ALL_EVENTS
-        );
+        const eventResponse = await getRequest(ApiRoutes.ALL_EVENTS);
         setResponseCopy(eventResponse.data);
 
         const userEventsResponse = await getRequest(
@@ -37,15 +35,16 @@ function App() {
     fetchEvents();
   }, [data]);
 
-
   const selectedEvent = async (keyValue) => {
     const payload = {
       eventId: keyValue,
-    };  
+    };
 
     try {
-      const response = await axios.post(`http://localhost:1000/api/user/${data}/register`,payload
-);
+      const response = await axios.post(
+        `http://localhost:1000/api/user/${data}/register`,
+        payload
+      );
 
       if (response.status === 200) {
         enqueueSnackbar("Event registered successfully", {
@@ -75,7 +74,10 @@ function App() {
     };
 
     try {
-      const response = await axios.post(`http://localhost:1000/api/user/${data}/unregister`,payload);
+      const response = await axios.post(
+        `http://localhost:1000/api/user/${data}/unregister`,
+        payload
+      );
 
       if (response.status === 200) {
         enqueueSnackbar("Event unregistered successfully", {
@@ -104,7 +106,7 @@ function App() {
   return (
     <>
       <Stack className="items-center">
-        <LogoutButton  />
+        <LogoutButton />
       </Stack>
       <Stack className="ml-4">
         {responseCopy.length > 0 && (

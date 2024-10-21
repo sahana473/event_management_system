@@ -1,4 +1,4 @@
-import { AppBar, Toolbar,Box } from "@mui/material";
+import { AppBar, Toolbar, Box } from "@mui/material";
 import LogoutIcon from "@mui/icons-material/LogoutRounded";
 import { useNavigate } from "react-router-dom";
 
@@ -12,7 +12,7 @@ const LogoutButton = () => {
     <div className="w-full shadow-sm">
       <AppBar
         position="static"
-        sx={{ bgcolor:"#539ed8", height: "60px" }}
+        sx={{ bgcolor: "#539ed8", height: "60px" }}
         elevation={0}
       >
         <Toolbar>
