@@ -134,8 +134,6 @@ app.post("/api/user/:userId/register", async (req, res) => {
 
     if (!user) return res.status(404).json({ error: "User not found" });
     if (!event) return res.status(404).json({ error: "Event not found" });
-
-    // Register user for the event if not already registered
     if (!user.events.includes(eventId)) {
       user.events.push(eventId);
       await user.save();
