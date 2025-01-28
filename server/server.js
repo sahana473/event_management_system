@@ -6,12 +6,25 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // Enable CORS for your React frontend
+const allowedOrigins = [
+  "http://localhost:3000",
+  "https://sports-events-tracker.netlify.app",
+];
+
 app.use((req, res, next) => {
-  res.header("Access-Control-Allow-Origin", "http://localhost:3000");
+  const origin = req.headers.origin;
+  if (allowedOrigins.includes(origin)) {
+    res.header("Access-Control-Allow-Origin", origin);
+  }
   res.header(
     "Access-Control-Allow-Headers",
     "Origin, X-Requested-With, Content-Type, Accept"
   );
+  res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
+  res.header("Access-Control-Allow-Credentials", "true"); // If you're using cookies or authorization headers
+  if (req.method === "OPTIONS") {
+    return res.sendStatus(200); // Handle preflight requests
+  }
   next();
 });
 
