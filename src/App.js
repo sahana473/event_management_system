@@ -108,7 +108,7 @@ function App() {
       <Stack className="items-center">
         <LogoutButton />
       </Stack>
-      <Stack className="ml-4">
+      <Stack className="m-4">
         {responseCopy.length > 0 && (
           <div className="border-2 rounded-md bg-slate-50">
             <Stack className="items-center mt-6">
