@@ -14,14 +14,18 @@ function App() {
   const data = location.state;
   const [selectedEventArray, setSelectedEventArray] = useState([]);
 
+  const BASE_URL = process.env.REACT_APP_API_URL;
+
   useEffect(() => {
     const fetchEvents = async () => {
       try {
-        const eventResponse = await getRequest(ApiRoutes.ALL_EVENTS);
+        const eventResponse = await getRequest(
+          `${BASE_URL}${ApiRoutes.ALL_EVENTS}`
+        );
         setResponseCopy(eventResponse.data);
 
         const userEventsResponse = await getRequest(
-          `http://localhost:1000/api/user/events/${data}`
+          `${BASE_URL}/api/user/events/${data}`
         );
         setSelectedEventArray(userEventsResponse.data);
       } catch (error) {
@@ -33,7 +37,7 @@ function App() {
     };
 
     fetchEvents();
-  }, [data]);
+  }, [data, BASE_URL]);
 
   const selectedEvent = async (keyValue) => {
     const payload = {
@@ -42,7 +46,7 @@ function App() {
 
     try {
       const response = await axios.post(
-        `http://localhost:1000/api/user/${data}/register`,
+        `${BASE_URL}/api/user/${data}/register`,
         payload
       );
 
@@ -75,7 +79,7 @@ function App() {
 
     try {
       const response = await axios.post(
-        `http://localhost:1000/api/user/${data}/unregister`,
+        `${BASE_URL}/api/user/${data}/unregister`,
         payload
       );
 
